@@ -8,18 +8,17 @@ export default class QrCode extends Component {
       delay: 300,
       result: "No result"
     };
-    this.handleScan = this.handleScan.bind(this);
   }
-  handleScan(data) {
+  handleScan = data => {
     if (data) {
       this.setState({
         result: data
       });
     }
-  }
-  handleError(err) {
+  };
+  handleError = err => {
     console.error(err);
-  }
+  };
   render() {
     return (
       <div>
