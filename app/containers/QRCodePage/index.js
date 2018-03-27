@@ -7,7 +7,10 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { FormattedMessage } from "react-intl";
 
+import QrReader from "react-qr-reader";
+
 import H1 from "components/H1";
+import QrCode from "components/QrCode";
 import messages from "./messages";
 import List from "./List";
 import ListItem from "./ListItem";
@@ -33,8 +36,8 @@ export default class FeaturePage extends React.Component {
             name="description"
             content="QR Code page of React.js Boilerplate application"
           />
-          <video autoPlay id="video" ref="vidRef" />
         </Helmet>
+        <QrCode />
       </div>
     );
   }
