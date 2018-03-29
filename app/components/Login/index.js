@@ -4,16 +4,14 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { FormattedMessage } from "react-intl";
 
+import Input from "components/Input";
+import Button from "components/Button";
+
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: 50px 50px 50px;
   grid-row-gap: 20px;
-`;
-
-const Input = styled.input`
-  background: white;
-  padding: 0 16px;
 `;
 
 const Email = styled(Input)`
@@ -26,10 +24,8 @@ const Password = styled(Input)`
   grid-row-start: 2;
 `;
 
-const Button = styled.button`
+const StyledButton = styled(Button)`
   grid-row-start: 3;
-  background-color: #9a53dc;
-  color: white;
 `;
 
 class Login extends React.Component {
@@ -61,9 +57,15 @@ class Login extends React.Component {
 
     return (
       <Wrapper>
-        <Email value={this.state.email} />
-        <Password value={this.state.password} />
-        <Button>Login</Button>
+        <Email
+          value={this.state.email}
+          onChange={event => this.setState({ email: event.target.value })}
+        />
+        <Password
+          value={this.state.password}
+          onChange={event => this.setState({ password: event.target.value })}
+        />
+        <StyledButton>Login</StyledButton>
       </Wrapper>
     );
   }
