@@ -1,18 +1,16 @@
 import { connect } from "react-redux";
 
-import { login } from "./actions";
+import { logInUser } from "containers/App/actions";
 
-import Login from "../../components/Login";
-console.log("login", Login);
+import Login from "components/Login";
 
 const mapStateToProps = state => ({
-  isLoggedIn: state.auth.isLoggedIn,
-  isLoggingIn: state.auth.isLoggingIn
+  isLoggedIn: true,
+  isLoggingIn: false
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (email, password) => dispatch(login(email, password))
+  onLogin: (email, password) => dispatch(logInUser(email, password))
 });
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Login);
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

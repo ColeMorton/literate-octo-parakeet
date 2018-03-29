@@ -19,7 +19,8 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-} from './constants';
+  LOG_IN_USER
+} from "./constants";
 
 /**
  * Load the repositories, this action starts the request saga
@@ -28,7 +29,7 @@ import {
  */
 export function loadRepos() {
   return {
-    type: LOAD_REPOS,
+    type: LOAD_REPOS
   };
 }
 
@@ -44,7 +45,7 @@ export function reposLoaded(repos, username) {
   return {
     type: LOAD_REPOS_SUCCESS,
     repos,
-    username,
+    username
   };
 }
 
@@ -58,6 +59,19 @@ export function reposLoaded(repos, username) {
 export function repoLoadingError(error) {
   return {
     type: LOAD_REPOS_ERROR,
-    error,
+    error
   };
 }
+
+/**
+ * Changes the input field of the form
+ *
+ * @param  {name} name The new text of the input field
+ *
+ * @return {object}    An action object with a type of CHANGE_USERNAME
+ */
+export const logInUser = (email, password) => ({
+  type: LOG_IN_USER,
+  email,
+  password
+});
