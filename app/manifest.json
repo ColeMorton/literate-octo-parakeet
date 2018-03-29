@@ -3,7 +3,6 @@
   "short_name": "LOP",
   "theme_color": "#9a53dc",
   "background_color": "#9a53dc",
-  ​​"orientation": "portrait-primary",
   "prefer_related_applications": true,
   "display": "standalone",
   "Scope": "/",
