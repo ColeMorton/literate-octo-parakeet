@@ -1,8 +1,10 @@
 {
   "name": "literate-octo-parakeet",
   "short_name": "LOP",
-  "theme_color": "#b1624d",
-  "background_color": "#fafafa",
+  "theme_color": "#9a53dc",
+  "background_color": "#9a53dc",
+  ​​"orientation": "portrait-primary",
+  "prefer_related_applications": true,
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",
