@@ -32,6 +32,7 @@ import "file-loader?name=[name].[ext]!./.htaccess"; // eslint-disable-line impor
 /* eslint-enable import/no-webpack-loader-syntax */
 
 import configureStore from "./configureStore";
+import api from "./utils/api";
 
 // Import i18n messages
 import { translationMessages } from "./i18n";
@@ -56,7 +57,7 @@ openSansObserver.load().then(
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
-const store = configureStore(initialState, history);
+const store = configureStore(initialState, history, { api: api.create() });
 const MOUNT_NODE = document.getElementById("app");
 
 const render = messages => {

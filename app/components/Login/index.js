@@ -39,13 +39,16 @@ class Login extends React.Component {
   }
 
   onLoginClick = () => {
-    const { isFormShown } = this.state;
-    if (!isFormShown) {
-      this.setState({ isFormShown: true });
-    } else {
-      const { email, password } = this.state;
-      this.props.onLogin(email, password);
-    }
+    // const { isFormShown } = this.state;
+    // if (!isFormShown) {
+    //   this.setState({ isFormShown: true });
+    // } else {
+    //   const { email, password } = this.state;
+    //   this.props.onLogin(email, password);
+    // }
+
+    const { email, password } = this.state;
+    this.props.onLogin(email, password);
   };
 
   render() {
@@ -65,7 +68,7 @@ class Login extends React.Component {
           value={this.state.password}
           onChange={event => this.setState({ password: event.target.value })}
         />
-        <StyledButton>Login</StyledButton>
+        <StyledButton onClick={this.onLoginClick}>Login</StyledButton>
       </Wrapper>
     );
   }

@@ -19,7 +19,9 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-  LOG_IN_USER
+  LOGIN,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR
 } from "./constants";
 
 /**
@@ -63,15 +65,17 @@ export function repoLoadingError(error) {
   };
 }
 
-/**
- * Changes the input field of the form
- *
- * @param  {name} name The new text of the input field
- *
- * @return {object}    An action object with a type of CHANGE_USERNAME
- */
-export const logInUser = (email, password) => ({
-  type: LOG_IN_USER,
+export const login = (email, password) => ({
+  type: LOGIN,
   email,
   password
+});
+
+export const loginSuccess = () => ({
+  type: LOGIN_SUCCESS
+});
+
+export const loginError = error => ({
+  type: LOGIN_ERROR,
+  error
 });

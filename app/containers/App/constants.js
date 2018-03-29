@@ -14,7 +14,9 @@ export const LOAD_REPOS_SUCCESS = "boilerplate/App/LOAD_REPOS_SUCCESS";
 export const LOAD_REPOS_ERROR = "boilerplate/App/LOAD_REPOS_ERROR";
 export const DEFAULT_LOCALE = "en";
 
-export const LOG_IN_USER = "boilerplate/App/LOG_IN_USER";
-export const LOG_IN_USER_PENDING = "boilerplate/App/LOG_IN_USER_PENDING";
-export const LOG_IN_USER_SUCCESS = "boilerplate/App/LOG_IN_USER_SUCCESS";
-export const LOG_IN_USER_ERROR = "boilerplate/App/LOG_IN_USER_ERROR";
+export const LOGIN = "boilerplate/App/LOGIN";
+export const LOGIN_PENDING = "boilerplate/App/LOGIN_PENDING";
+export const LOGIN_SUCCESS = "boilerplate/App/LOGIN_SUCCESS";
+export const LOGIN_ERROR = "boilerplate/App/LOGIN_ERROR";
+
+export const LOGOUT = "boilerplate/App/LOGOUT";

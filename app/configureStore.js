@@ -11,7 +11,7 @@ import sagas from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default function configureStore(initialState = {}, history) {
+export default function configureStore(initialState = {}, history, services) {
   // Create the store with two middlewares
   // 1. sagaMiddleware: Makes redux-sagas work
   // 2. routerMiddleware: Syncs the location/URL path to the state
@@ -40,7 +40,7 @@ export default function configureStore(initialState = {}, history) {
   );
 
   // Extensions
-  store.runSaga = sagaMiddleware.run(sagas);
+  store.runSaga = sagaMiddleware.run(sagas, services);
   store.injectedReducers = {}; // Reducer registry
   store.injectedSagas = {}; // Saga registry
 
@@ -54,7 +54,7 @@ export default function configureStore(initialState = {}, history) {
       const nextSagas = require("./sagas").default;
       sagaTask.cancel();
       sagaTask.done.then(() => {
-        sagaTask = sagaMiddleware.run(nextSagas);
+        sagaTask = sagaMiddleware.run(nextSagas, services);
       });
     });
   }
