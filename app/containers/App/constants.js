@@ -14,6 +14,8 @@ export const LOAD_REPOS_SUCCESS = "boilerplate/App/LOAD_REPOS_SUCCESS";
 export const LOAD_REPOS_ERROR = "boilerplate/App/LOAD_REPOS_ERROR";
 export const DEFAULT_LOCALE = "en";
 
+export const INIT = "boilerplate/App/INIT";
+
 export const LOGIN = "boilerplate/App/LOGIN";
 export const LOGIN_PENDING = "boilerplate/App/LOGIN_PENDING";
 export const LOGIN_SUCCESS = "boilerplate/App/LOGIN_SUCCESS";

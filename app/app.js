@@ -19,6 +19,7 @@ import "sanitize.css/sanitize.css";
 
 // Import root app
 import App from "containers/App";
+import { init } from "containers/App/actions";
 
 // Import Language Provider
 import LanguageProvider from "containers/LanguageProvider";
@@ -32,7 +33,8 @@ import "file-loader?name=[name].[ext]!./.htaccess"; // eslint-disable-line impor
 /* eslint-enable import/no-webpack-loader-syntax */
 
 import configureStore from "./configureStore";
-import api from "./utils/api";
+import Api from "./utils/api";
+import Auth from "./utils/auth";
 
 // Import i18n messages
 import { translationMessages } from "./i18n";
@@ -57,7 +59,11 @@ openSansObserver.load().then(
 // Create redux store with history
 const initialState = {};
 const history = createHistory();
-const store = configureStore(initialState, history, { api: api.create() });
+const api = Api.create();
+const auth = Auth.create({ api });
+const store = configureStore(initialState, history, { api, auth });
+store.dispatch(init());
+
 const MOUNT_NODE = document.getElementById("app");
 
 const render = messages => {

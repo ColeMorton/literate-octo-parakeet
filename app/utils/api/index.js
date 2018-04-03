@@ -45,10 +45,6 @@ export const parseEndpoint = (endpoint, params) => {
   return `${url}${querystring}`;
 };
 
-const TIMEFRAME = 300;
-export const getRefreshAfter = (createdAt, expiresIn, timeframe = TIMEFRAME) =>
-  createdAt + expiresIn - timeframe;
-
 const api = {};
 
 api.request = (endpoint, { params, ...settings } = {}) => {
@@ -86,6 +82,9 @@ api.requestNewToken = (refreshToken, settings) =>
 api.create = (settings = {}) => ({
   settings,
 
+  //async funcs receive { endpoint, body }
+  requestInterceptors: [],
+
   setToken(token) {
     this.settings.headers = {
       ...this.settings.headers,
@@ -98,51 +97,20 @@ api.create = (settings = {}) => ({
       ...this.settings.headers,
       Authorization: undefined
     };
-    this.authentication = undefined;
   },
 
-  setRefreshToken(refreshToken, refreshAfter) {
-    this.authentication = {
-      refreshToken,
-      refreshAfter
-    };
-  },
-
-  async request(endpoint, settings) {
-    const checkIfShouldFetchNewToken = async () => {
-      const shouldFetchNewToken =
-        parseInt(Date.now() / 1000) > this.authentication.refreshAfter;
-      if (!shouldFetchNewToken) return;
-
-      const {
-        access_token,
-        refresh_token,
-        created_at,
-        expires_in
-      } = await api.requestNewToken(
-        this.settings,
-        this.authentication.refreshToken
-      );
-      console.log("new token received", {
-        access_token,
-        refresh_token,
-        created_at,
-        expires_in
-      });
-
-      const refreshAfter = getRefreshAfter(created_at, expires_in);
-      console.log("refreshAfter", refreshAfter);
-
-      this.setToken(access_token);
-      this.setRefreshToken(refresh_token, refreshAfter);
-    };
-
+  async request(endpoint, body) {
     try {
-      if (this.authentication) await checkIfShouldFetchNewToken();
-      return api.request(endpoint, merge({}, this.settings, settings));
+      const bodyComplete = { ...this.settings, ...body };
+      await this.interceptRequest(endpoint, bodyComplete);
+      return api.request(endpoint, bodyComplete);
     } catch (e) {
       return e;
     }
+  },
+
+  async requestNewToken(refreshToken) {
+    return api.requestNewToken(refreshToken, this.settings);
   },
 
   post(endpoint, data, settings) {
@@ -163,6 +131,18 @@ api.create = (settings = {}) => ({
 
   delete(endpoint, settings) {
     return this.request(endpoint, { method: "delete", ...settings });
+  },
+
+  attachRequestInterceptor(handler) {
+    this.requestInterceptors.push(handler);
+  },
+
+  async interceptRequest(endpoint, body) {
+    await Promise.all(
+      this.requestInterceptors.map(interceptor =>
+        interceptor({ endpoint, body })
+      )
+    );
   }
 });
 

@@ -16,6 +16,7 @@
  */
 
 import {
+  INIT,
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
@@ -64,6 +65,10 @@ export function repoLoadingError(error) {
     error
   };
 }
+
+export const init = () => ({
+  type: INIT
+});
 
 export const login = (email, password) => ({
   type: LOGIN,
