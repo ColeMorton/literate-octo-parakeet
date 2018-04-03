@@ -11,7 +11,7 @@ class Container extends React.Component {
     this.checkAuthentication(this.props);
   }
   componentWillReceiveProps(nextProps) {
-    this.checkAuthentication(this.props);
+    this.checkAuthentication(nextProps);
   }
   checkAuthentication({ currentUser, history }) {
     if (currentUser) history.replace({ pathname: "/" });
