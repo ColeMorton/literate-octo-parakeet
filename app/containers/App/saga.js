@@ -5,7 +5,10 @@ import { loginSuccess, loginError } from "containers/App/actions";
 export function* init({ auth }) {
   console.log("init", auth);
 
-  auth.importSession();
+  const user = auth.importSession();
+  console.log("session imported", user);
+
+  if (user) yield put(loginSuccess(user));
 }
 
 export function* watchInit({ api, auth }) {
@@ -18,7 +21,11 @@ export function* login({ api, auth }, { email, password }) {
 
   try {
     yield call([auth, auth.newSession], { email, password });
-    yield put(loginSuccess());
+    const user = {
+      name: "John Smith"
+    };
+
+    yield put(loginSuccess(user));
   } catch (err) {
     yield put(loginError(err));
   }

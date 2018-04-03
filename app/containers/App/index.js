@@ -38,8 +38,8 @@ export default function App() {
       </Helmet>
       {/* <Header /> */}
       <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/home" component={HomePage} />
+        <Route exact path="/" component={HomePage} />
+        <Route path="/login" component={LoginPage} />
         <Route path="/features" component={FeaturePage} />
         <Route path="/qrcode" component={QRCodePage} />
         <Route path="" component={NotFoundPage} />

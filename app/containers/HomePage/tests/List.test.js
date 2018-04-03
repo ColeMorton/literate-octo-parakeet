@@ -1,27 +1,27 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AtPrefix from '../AtPrefix';
+import List from '../List';
 
-describe('<AtPrefix />', () => {
-  it('should render an <span> tag', () => {
-    const renderedComponent = shallow(<AtPrefix />);
-    expect(renderedComponent.type()).toEqual('span');
+describe('<List />', () => {
+  it('should render an <ul> tag', () => {
+    const renderedComponent = shallow(<List />);
+    expect(renderedComponent.type()).toEqual('ul');
   });
 
   it('should have a className attribute', () => {
-    const renderedComponent = shallow(<AtPrefix />);
+    const renderedComponent = shallow(<List />);
     expect(renderedComponent.prop('className')).toBeDefined();
   });
 
   it('should adopt a valid attribute', () => {
     const id = 'test';
-    const renderedComponent = shallow(<AtPrefix id={id} />);
+    const renderedComponent = shallow(<List id={id} />);
     expect(renderedComponent.prop('id')).toEqual(id);
   });
 
   it('should not adopt an invalid attribute', () => {
-    const renderedComponent = shallow(<AtPrefix attribute={'test'} />);
+    const renderedComponent = shallow(<List attribute={'test'} />);
     expect(renderedComponent.prop('attribute')).toBeUndefined();
   });
 });

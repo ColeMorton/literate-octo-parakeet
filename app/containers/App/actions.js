@@ -76,8 +76,9 @@ export const login = (email, password) => ({
   password
 });
 
-export const loginSuccess = () => ({
-  type: LOGIN_SUCCESS
+export const loginSuccess = user => ({
+  type: LOGIN_SUCCESS,
+  user
 });
 
 export const loginError = error => ({

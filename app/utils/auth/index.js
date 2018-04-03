@@ -55,7 +55,8 @@ Auth.create = ({ api }) => {
         accessToken: "abc-" + Date.now(),
         refreshToken: undefined,
         createdAt: Date.now(),
-        expiresIn: undefined
+        expiresIn: undefined,
+        user: { name: "John Smith" }
       };
 
       await this.setSession(session);
@@ -70,11 +71,12 @@ Auth.create = ({ api }) => {
       console.log("importSession");
 
       const session = this.getSession();
-      if (!session) return false;
+      if (!session) return;
       if (session.expiresIn < Date.now()) {
         this.endSession();
       } else {
         this.setSession(session);
+        return session.user;
       }
     },
 
