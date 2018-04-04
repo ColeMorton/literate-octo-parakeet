@@ -16,6 +16,7 @@ const HomePage = ({ onLogOut }) => (
     </Helmet>
     <H1>Home Page</H1>
     <Button onClick={onLogOut}>Log Out</Button>
+    <span className="icon-user" />
   </div>
 );
 
