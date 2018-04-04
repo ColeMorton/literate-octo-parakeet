@@ -8,18 +8,15 @@ import { makeSelectCurrentUser } from "containers/App/selectors";
  * Higher-order component (HOC) to wrap restricted pages
  */
 const Container = BaseComponent => {
-  class Restricted extends React.Component {
+  class Restricted extends React.PureComponent {
     componentWillMount() {
       this.checkAuthentication(this.props);
     }
     componentWillReceiveProps(nextProps) {
-      if (nextProps.location !== this.props.location) {
-        this.checkAuthentication(nextProps);
-      }
+      this.checkAuthentication(nextProps);
     }
-    checkAuthentication(params) {
-      const { currentUser, history } = params;
-      if (!currentUser) history.replace({ pathname: "/login" });
+    checkAuthentication({ currentUser, history }) {
+      !currentUser && history.replace({ pathname: "/login" });
     }
     render() {
       return <BaseComponent {...this.props} />;

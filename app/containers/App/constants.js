@@ -16,9 +16,11 @@ export const DEFAULT_LOCALE = "en";
 
 export const INIT = "boilerplate/App/INIT";
 
-export const LOGIN = "boilerplate/App/LOGIN";
-export const LOGIN_PENDING = "boilerplate/App/LOGIN_PENDING";
-export const LOGIN_SUCCESS = "boilerplate/App/LOGIN_SUCCESS";
-export const LOGIN_ERROR = "boilerplate/App/LOGIN_ERROR";
+export const LOG_IN = "boilerplate/App/LOG_IN";
+export const LOG_IN_PENDING = "boilerplate/App/LOG_IN_PENDING";
+export const LOG_IN_SUCCESS = "boilerplate/App/LOG_IN_SUCCESS";
+export const LOG_IN_ERROR = "boilerplate/App/LOG_IN_ERROR";
 
-export const LOGOUT = "boilerplate/App/LOGOUT";
+export const START_SESSION = "boilerplate/App/START_SESSION";
+
+export const LOG_OUT = "boilerplate/App/LOG_OUT";

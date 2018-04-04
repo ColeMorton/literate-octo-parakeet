@@ -38,7 +38,7 @@ class Login extends React.Component {
     };
   }
 
-  onLoginClick = () => {
+  onLogInClick = () => {
     // const { isFormShown } = this.state;
     // if (!isFormShown) {
     //   this.setState({ isFormShown: true });
@@ -48,7 +48,7 @@ class Login extends React.Component {
     // }
 
     const { email, password } = this.state;
-    this.props.onLogin(email, password);
+    this.props.onLogIn(email, password);
   };
 
   render() {
@@ -68,7 +68,7 @@ class Login extends React.Component {
           value={this.state.password}
           onChange={event => this.setState({ password: event.target.value })}
         />
-        <StyledButton onClick={this.onLoginClick}>Login</StyledButton>
+        <StyledButton onClick={this.onLogInClick}>Log In</StyledButton>
       </Wrapper>
     );
   }
@@ -76,7 +76,7 @@ class Login extends React.Component {
 
 Login.propTypes = {
   isLoggingIn: PropTypes.bool.isRequired,
-  onLogin: PropTypes.func.isRequired
+  onLogIn: PropTypes.func.isRequired
 };
 
 export default Login;

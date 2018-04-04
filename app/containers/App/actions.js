@@ -20,9 +20,11 @@ import {
   LOAD_REPOS,
   LOAD_REPOS_SUCCESS,
   LOAD_REPOS_ERROR,
-  LOGIN,
-  LOGIN_SUCCESS,
-  LOGIN_ERROR
+  LOG_IN,
+  LOG_IN_SUCCESS,
+  LOG_IN_ERROR,
+  START_SESSION,
+  LOG_OUT
 } from "./constants";
 
 /**
@@ -70,18 +72,26 @@ export const init = () => ({
   type: INIT
 });
 
-export const login = (email, password) => ({
-  type: LOGIN,
+export const logIn = (email, password) => ({
+  type: LOG_IN,
   email,
   password
 });
 
-export const loginSuccess = user => ({
-  type: LOGIN_SUCCESS,
+export const logInSuccess = () => ({
+  type: LOG_IN_SUCCESS
+});
+
+export const logInError = error => ({
+  type: LOG_IN_ERROR,
+  error
+});
+
+export const startSession = user => ({
+  type: START_SESSION,
   user
 });
 
-export const loginError = error => ({
-  type: LOGIN_ERROR,
-  error
+export const logOut = () => ({
+  type: LOG_OUT
 });

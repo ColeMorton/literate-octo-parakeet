@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { login } from "containers/App/actions";
+import { logIn } from "containers/App/actions";
 
 import Login from "components/Login";
 
@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  onLogin: (email, password) => dispatch(login(email, password))
+  onLogIn: (email, password) => dispatch(logIn(email, password))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
