@@ -26,11 +26,10 @@ export function* logIn({ api, auth }, { email, password }) {
     if (!user) throw new Error("No user returned");
 
     yield put(logInSuccess());
+    yield call(startSession, { auth, user });
   } catch (err) {
     yield put(logInError(err));
   }
-
-  yield call(startSession, { auth, user });
 }
 
 export function* watchLogIn({ api, auth }) {

@@ -39,11 +39,11 @@ export default function App() {
       </Helmet>
       {/* <Header /> */}
       <Switch>
-        <Route exact path="/" component={RestrictedPage(HomePage)} />
         <Route path="/login" component={LoginPage} />
+        <Route exact path="/" component={RestrictedPage(HomePage)} />
         <Route path="/features" component={RestrictedPage(FeaturePage)} />
         <Route path="/qrcode" component={RestrictedPage(QRCodePage)} />
-        <Route path="" component={NotFoundPage} />
+        <Route path="" component={RestrictedPage(NotFoundPage)} />
       </Switch>
       {/* <Footer /> */}
     </AppWrapper>
