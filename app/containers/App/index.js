@@ -36,8 +36,8 @@ export default function App() {
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
       <Switch>
-        <Route path="/login" component={LoginPage} />
-        <Route exact path="/" component={RestrictedPage(HomePage)} />
+        <Route exact path="/" component={LoginPage} />
+        <Route path="/home" component={RestrictedPage(HomePage)} />
         <Route path="/features" component={RestrictedPage(FeaturePage)} />
         <Route path="/qrcode" component={RestrictedPage(QRCodePage)} />
         <Route path="" component={RestrictedPage(NotFoundPage)} />

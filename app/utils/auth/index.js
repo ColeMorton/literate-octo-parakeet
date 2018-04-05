@@ -42,25 +42,25 @@ const Auth = {};
 
 Auth.create = ({ api }) => {
   const auth = {
-    async newSession(username, password) {
+    async newSession({ email, password }) {
       const body = {
         grant_type: "password",
         client_id,
-        username,
+        username: email,
         password
       };
 
       console.log("fetching token...");
       // const session = await api.post(`/oauth/token/`, body);
-      // const session = mapSessionResponse(await api.post(`/oauth/token/`, body));
+      const session = mapSessionResponse(await api.post(`/oauth/token`, body));
 
-      const session = {
-        accessToken: "abc-" + Date.now(),
-        refreshToken: undefined,
-        createdAt: Date.now(),
-        expiresIn: undefined,
-        user: { name: "John Smith" }
-      };
+      // const session = {
+      //   accessToken: "abc-" + Date.now(),
+      //   refreshToken: undefined,
+      //   createdAt: Date.now(),
+      //   expiresIn: undefined,
+      //   user: { name: "John Smith" }
+      // };
 
       console.log("token:", session);
       if (!session) throw new Error("No token returned");

@@ -48,6 +48,9 @@ module.exports = require("./webpack.base.babel")({
       publicPath: "/",
 
       ServiceWorker: {
+        events: true,
+        navigateFallbackURL: "/",
+
         // Entry in your project, will be included into SW file
         entry: "./app/sw.js"
       },
@@ -57,7 +60,7 @@ module.exports = require("./webpack.base.babel")({
       excludes: [".htaccess"],
 
       caches: {
-        main: [":rest:"],
+        main: ["index.html", ":rest:"],
 
         // All chunks marked as `additional`, loaded after main section
         // and do not prevent SW to install. Change to `optional` if

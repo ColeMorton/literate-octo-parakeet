@@ -16,7 +16,7 @@ const Container = BaseComponent => {
       this.checkAuthentication(nextProps);
     }
     checkAuthentication({ currentUser, history }) {
-      !currentUser && history.replace({ pathname: "/login" });
+      !currentUser && history.replace({ pathname: "/" });
     }
     render() {
       return <BaseComponent {...this.props} />;
