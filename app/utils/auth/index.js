@@ -22,6 +22,7 @@ export const checkIfShouldFetchNewToken = auth => async ({
   endpoint,
   body
 }) => {
+  if (auth.hasSession()) return false;
   const { createdAt, expiresIn, refreshToken } = auth.getSession();
 
   const refreshAfter =
@@ -50,7 +51,9 @@ Auth.create = ({ api }) => {
       };
 
       console.log("fetching token...");
+      // const session = await api.post(`/oauth/token/`, body);
       // const session = mapSessionResponse(await api.post(`/oauth/token/`, body));
+
       const session = {
         accessToken: "abc-" + Date.now(),
         refreshToken: undefined,
@@ -58,6 +61,9 @@ Auth.create = ({ api }) => {
         expiresIn: undefined,
         user: { name: "John Smith" }
       };
+
+      console.log("token:", session);
+      if (!session) throw new Error("No token returned");
 
       await this.setSession(session);
     },
@@ -90,6 +96,10 @@ Auth.create = ({ api }) => {
 
       await api.setToken(session.accessToken);
       console.log("token set", api.settings.headers);
+    },
+
+    hasSession() {
+      return this.getSession() !== undefined;
     }
   };
 
