@@ -17,8 +17,6 @@ import HomePage from "containers/HomePage/Loadable";
 import FeaturePage from "containers/FeaturePage/Loadable";
 import QRCodePage from "containers/QRCodePage/Loadable";
 import NotFoundPage from "containers/NotFoundPage/Loadable";
-import Header from "components/Header";
-import Footer from "components/Footer";
 
 const AppWrapper = styled.div`
   max-width: calc(768px + 16px * 2);
@@ -37,7 +35,6 @@ export default function App() {
       >
         <meta name="description" content="A React.js Boilerplate application" />
       </Helmet>
-      {/* <Header /> */}
       <Switch>
         <Route path="/login" component={LoginPage} />
         <Route exact path="/" component={RestrictedPage(HomePage)} />
@@ -45,7 +42,6 @@ export default function App() {
         <Route path="/qrcode" component={RestrictedPage(QRCodePage)} />
         <Route path="" component={RestrictedPage(NotFoundPage)} />
       </Switch>
-      {/* <Footer /> */}
     </AppWrapper>
   );
 }

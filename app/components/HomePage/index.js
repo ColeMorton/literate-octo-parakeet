@@ -5,20 +5,22 @@ import PropTypes from "prop-types";
 import H1 from "components/H1";
 import Button from "components/Button";
 
-const HomePage = ({ onLogOut }) => (
-  <div>
-    <Helmet>
-      <title>Home Page</title>
-      <meta
-        name="description"
-        content="Home page of React.js Boilerplate application"
-      />
-    </Helmet>
-    <H1>Home Page</H1>
-    <Button onClick={onLogOut}>Log Out</Button>
-    <span className="icon-user" />
-  </div>
-);
+const HomePage = ({ onLogOut, Footer }) => {
+  return (
+    <div>
+      <Helmet>
+        <title>Home Page</title>
+        <meta
+          name="description"
+          content="Home page of React.js Boilerplate application"
+        />
+      </Helmet>
+      <H1>Home Page</H1>
+      <Button onClick={onLogOut}>Log Out</Button>
+      <Footer />
+    </div>
+  );
+};
 
 HomePage.propTypes = {
   onLogOut: PropTypes.func.isRequired
