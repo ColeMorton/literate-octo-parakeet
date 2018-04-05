@@ -9,6 +9,8 @@ import { FormattedMessage } from "react-intl";
 
 import QrReader from "react-qr-reader";
 
+import Footer from "containers/Footer";
+import ScreenTemplate from "components/templates/ScreenTemplate";
 import H1 from "components/H1";
 import QrCode from "components/QrCode";
 import messages from "./messages";
@@ -29,7 +31,7 @@ export default class FeaturePage extends React.Component {
 
   render() {
     return (
-      <div>
+      <ScreenTemplate Footer={Footer}>
         <Helmet>
           <title>QR Code Page</title>
           <meta
@@ -38,7 +40,7 @@ export default class FeaturePage extends React.Component {
           />
         </Helmet>
         <QrCode />
-      </div>
+      </ScreenTemplate>
     );
   }
 }

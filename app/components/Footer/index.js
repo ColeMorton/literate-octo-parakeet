@@ -2,25 +2,24 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FormattedMessage } from "react-intl";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.footer`
   position: absolute;
   bottom: 0;
   font-size: 22pt;
-  color: white;
   display: flex;
   justify-content: space-between;
   width: 100%;
-  border-width: thin;
-  border-color: grey;
-  border-top: solid;
   background-color: #9a53dc;
 `;
 
-const IconButton = styled.span`
+const IconButton = styled(Link)`
   flex-grow: 1;
   text-align: center;
   height: 60px;
+  text-decoration: inherit;
+  color: white;
 `;
 
 const Icon = styled.i`
@@ -30,19 +29,19 @@ const Icon = styled.i`
 function Footer({ onButtonClick }) {
   return (
     <Wrapper>
-      <IconButton onClick={onButtonClick}>
+      <IconButton to="/" onClick={onButtonClick}>
         <Icon className="icon-home icons" />
       </IconButton>
-      <IconButton onClick={onButtonClick}>
+      <IconButton to="/" onClick={onButtonClick}>
         <Icon className="icon-compass icons" />
       </IconButton>
-      <IconButton onClick={onButtonClick}>
+      <IconButton to="/qrcode" onClick={onButtonClick}>
         <Icon className="icon-frame icons" />
       </IconButton>
-      <IconButton onClick={onButtonClick}>
+      <IconButton to="/" onClick={onButtonClick}>
         <Icon className="icon-heart icons" />
       </IconButton>
-      <IconButton onClick={onButtonClick}>
+      <IconButton to="/" onClick={onButtonClick}>
         <Icon className="icon-user icons" />
       </IconButton>
     </Wrapper>
