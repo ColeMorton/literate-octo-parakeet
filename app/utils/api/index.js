@@ -20,19 +20,17 @@ export const parseSettings = ({
   locale,
   ...otherSettings
 } = {}) => {
-  const headers = {
+  const headers = new Headers({
     Accept: "application/json",
     "Content-Type": "application/json"
     // "Accept-Language": locale
-  };
+  });
   const settings = merge(
     {
       body: data ? JSON.stringify(data) : undefined,
       method,
       headers,
-
-      //TODO: should remove to enforce cors
-      mode: "no-cors"
+      mode: "cors"
     },
     otherSettings
   );
